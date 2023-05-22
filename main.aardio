@@ -43,13 +43,13 @@ import sys.comPort;
 import sio;
 
 var setCommList = function(){
-	mainForm.baudrate.items = { "300";"600";"1200";"1800";"2400";"4800";"7200";"9600";"19200";"38400";"57600";"115200";"230400";"460800";"921600" };
+	mainForm.baudrate.items = sio.baudRates()
 	mainForm.dataBits.items = { "5";"6";"7";"8" }
 	mainForm.parityBit.items = { "none";"even";"odd";"spc";"mrk"; };
 	mainForm.stopBits.items = { "1";"1.5";"2" };
 	mainForm.port.items =	sys.comPort.list();
 	mainForm.port.selIndex = mainForm.port.count;
-	mainForm.baudrate.selIndex = 13;
+	mainForm.baudrate.selIndex = 12;
 	mainForm.dataBits.selIndex = 4;
 	mainForm.parityBit.selIndex = 1;
 	mainForm.stopBits.selIndex = 1;
@@ -61,25 +61,22 @@ var setCommList = function(){
 setCommList();
 
 //定义端口
-var sport;
+var sport, err;
 //打开串口
 mainForm.openButton.oncommand = function(id,event){
-	
+	// 如果串口已经打开则关闭当前打开的串口
 	if(sport) {
 		sport.close();
 	}
 	
 	if(!mainForm.port.selText) {
 		return mainForm.msgboxErr("请选择端口");
-	}
-    
-    
+	} 
     //打开端口
-    sport = sio.port( mainForm.port.selText );
+    sport, err = sio.port( mainForm.port.selText );
     if(!sport) {
-    	return mainForm.msgboxErr("串口打开失败！");
+    	return mainForm.msgboxErr(err);
     }
-    
 	//设置串口(波特率,数据位,停止位,校验位)
 	sport.ioctl(tonumber( mainForm.baudrate.selText ),tonumber( mainForm.dataBits.selText ),tonumber( mainForm.stopBits.selText ),mainForm.parityBit.selText);	
 	//串口接收到数据触发回调
@@ -112,14 +109,14 @@ mainForm.closeButton.oncommand = function(id,event){
 mainForm.onDestroy = function(){
     if(sport) {
     	sport.close();
-    }
-    
+    }  
 }
 
 //清空接收区
 mainForm.clearRecButton.oncommand = function(id,event){
 	mainForm.receiveText.text = "";	
 }
+
 //保存数据
 mainForm.saveButton.oncommand = function(id,event){
 	import fsys.dlg;
@@ -131,6 +128,7 @@ mainForm.saveButton.oncommand = function(id,event){
 		mainForm.msgboxErr("保存失败!")
 	}
 }
+
 //清空发送框内容
 mainForm.clearsendButton.oncommand = function(id,event){
 	mainForm.inputText.text = "";	
@@ -144,6 +142,7 @@ var HexToDec=function(data,len){
 		}
 	return eval(str );                    	
 }
+
 //转换为HEX码
 var Hex=function(data,len){
 	if(len == null){
@@ -156,6 +155,7 @@ var Hex=function(data,len){
 		}
 	return string.trim(str);                    	
 }
+
  //hex转ascii
  var Ascii=function(data){
  	var data = string.replace(data," ","");
@@ -165,6 +165,7 @@ var Hex=function(data,len){
 		}
 	return str; 
 }
+
 //初始化单选对象
 var sel_Obj = mainForm.AsciiButton.checked ? "ascii" : "hex";
 //ascii单选被单击
@@ -191,6 +192,7 @@ mainForm.AsciiButton.oncommand = function(id,event){
 		
 	}
 }
+
 //hex单选被单击
 mainForm.hexButton.oncommand = function(id,event){
 	if(sel_Obj != "hex"){
@@ -199,6 +201,7 @@ mainForm.hexButton.oncommand = function(id,event){
 			mainForm.inputText.text = Hex(editdata,);
 	}	
 }
+
 //手动发送
 mainForm.sendButton.oncommand = function(id,event){
     //判断发送内容合法性
@@ -223,6 +226,7 @@ mainForm.sendButton.oncommand = function(id,event){
 	var ret = (sel_Obj=="ascii") ? sport.write( mainForm.inputText.text ) : sport.writeHex( mainForm.inputText.text );
 	
 }
+
 //定义一个全局定时器
 var autoTimehwnd;
 //停止自动发送
@@ -230,6 +234,7 @@ mainForm.stopAutoButton.oncommand = function(id,event){
 	mainForm.settimer(autoTimehwnd,-1);
 	mainForm.autoSendButton.disabled = false;
 }
+
 //开启自动发送
 mainForm.autoSendButton.oncommand = function(id,event){
 	mainForm.autoSendButton.disabled = true;
@@ -258,6 +263,7 @@ mainForm.autoSendButton.oncommand = function(id,event){
 		}
 	);
 }
+
 //发送文件
 mainForm.sendFileButton.oncommand = function(id,event){
     import fsys.dlg;
