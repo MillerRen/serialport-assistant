@@ -1,7 +1,7 @@
 import win.ui;
 import win.dlg.message;
 /*DSG{{*/
-mainForm = win.form(text="串口调试助手(aardio版本)";right=731;bottom=342;border="dialog frame")
+mainForm = win.form(text="串口调试助手";right=731;bottom=342;border="dialog frame")
 mainForm.add(
 AsciiButton={cls="radiobutton";text="AscII";left=165;top=235;right=223;bottom=260;checked=1;font=LOGFONT(h=-16);z=19};
 HexRecCheck={cls="checkbox";text="Hex 接收";left=217;top=46;right=288;bottom=68;z=29};
