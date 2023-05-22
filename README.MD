@@ -1,5 +1,6 @@
 # 串口调试助手
-一个简单的串口调试助手，使用aardio开发。
+一个简单的串口调试助手，使用[aardio](https://www.aardio.com)开发。
+![演示](./doc/screenshoot.png)
 
 ## 使用方法
 本串口调试助手是绿色软件，下载release中的exe版本即可享用。
