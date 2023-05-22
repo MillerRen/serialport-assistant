@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project ver="10" name="串口测试" libEmbed="true" icon="res\favicon.ico" ui="win" output="串口测试.exe" CompanyName="单位名称" FileDescription="串口测试" LegalCopyright="Copyright (C) 单位名称 2018" ProductName="串口测试" InternalName="串口测试" FileVersion="0.0.0.03" ProductVersion="0.0.0.03" publishDir="/Publish/" dstrip="false">
+	<file name="main.aardio" path="main.aardio" comment="main.aardio"/>
+	<folder name="资源文件" path="res" embed="true">
+		<file name="favicon.ico" path="res\favicon.ico" comment="res\favicon.ico"/>
+	</folder>
+</project>
