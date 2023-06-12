@@ -3,38 +3,36 @@ import win.dlg.message;
 /*DSG{{*/
 mainForm = win.form(text="串口调试助手";right=731;bottom=342;border="dialog frame")
 mainForm.add(
-AsciiButton={cls="radiobutton";text="AscII";left=165;top=235;right=223;bottom=260;checked=1;font=LOGFONT(h=-16);z=19};
-HexRecCheck={cls="checkbox";text="Hex 接收";left=217;top=46;right=288;bottom=68;z=29};
-autoRecCheck={cls="checkbox";text="自动换行";left=217;top=23;right=288;bottom=45;checked=1;z=28};
-autoSendButton={cls="button";text="自动发送";left=557;top=269;right=636;bottom=301;z=21};
+AsciiButton={cls="radiobutton";text="AscII";left=229;top=275;right=287;bottom=300;checked=1;font=LOGFONT(h=-16);z=18};
+HexRecCheck={cls="checkbox";text="Hex 接收";left=217;top=46;right=288;bottom=68;z=27};
+autoRecCheck={cls="checkbox";text="自动换行";left=217;top=23;right=288;bottom=45;checked=1;z=26};
+autoSendButton={cls="button";text="自动";left=556;top=268;right=589;bottom=300;z=20};
 baudrate={cls="combobox";left=92;top=52;right=197;bottom=72;edge=1;items={};mode="dropdownlist";z=7};
 baudrateLabel={cls="static";text="波特率:";left=20;top=47;right=76;bottom=77;align="right";center=1;font=LOGFONT(h=-16);notify=1;transparent=1;z=8};
-clearRecButton={cls="button";text='清空\u2192';left=214;top=181;right=287;bottom=208;z=30};
-clearsendButton={cls="button";text='\u2191清空发送内容';left=228;top=273;right=348;bottom=302;z=26};
+clearRecButton={cls="button";text='清空\u2192';left=214;top=181;right=287;bottom=208;z=28};
+clearsendButton={cls="button";text='清空发送内容\u2192';left=27;top=227;right=201;bottom=259;z=24};
 closeButton={cls="button";text="关闭";left=114;top=171;right=195;bottom=195;z=6};
 comHaoname={cls="static";text="端口号:";left=20;top=17;right=76;bottom=47;align="right";center=1;font=LOGFONT(h=-16);notify=1;transparent=1;z=4};
 dataBits={cls="combobox";left=92;top=81;right=197;bottom=101;edge=1;items={};mode="dropdownlist";z=9};
 dataBitsLabel={cls="static";text="数据位:";left=20;top=78;right=76;bottom=108;align="right";center=1;font=LOGFONT(h=-16);notify=1;transparent=1;z=10};
 groupbox={cls="groupbox";left=14;top=4;right=208;bottom=208;edge=1;z=2};
 groupbox2={cls="groupbox";left=14;top=213;right=725;bottom=308;edge=1;z=1};
-hexButton={cls="radiobutton";text="Hex";left=106;top=235;right=164;bottom=260;font=LOGFONT(h=-16);z=18};
-inputText={cls="edit";left=226;top=230;right=544;bottom=259;border=1;font=LOGFONT(h=-19);z=16};
+hexButton={cls="radiobutton";text="Hex";left=227;top=234;right=285;bottom=259;font=LOGFONT(h=-16);z=17};
+inputText={cls="edit";left=290;top=230;right=544;bottom=301;border=1;font=LOGFONT(h=-19);multiline=1;z=16};
 openButton={cls="button";text="打开";left=20;top=171;right=101;bottom=195;z=5};
 parityBit={cls="combobox";left=92;top=111;right=197;bottom=131;edge=1;items={};mode="dropdownlist";z=11};
 parityLabel={cls="static";text="校验位:";left=20;top=109;right=76;bottom=139;align="right";center=1;font=LOGFONT(h=-16);notify=1;transparent=1;z=12};
 port={cls="combobox";left=92;top=22;right=197;bottom=42;edge=1;items={};mode="dropdownlist";z=3};
 receiveText={cls="edit";left=290;top=8;right=719;bottom=206;autohscroll=false;border=1;multiline=1;vscroll=1;z=15};
-saveButton={cls="button";text="保存数据";left=214;top=151;right=287;bottom=178;z=31};
-sendButton={cls="button";text="手动发送";left=556;top=227;right=718;bottom=259;z=20};
-sendDataLabel={cls="static";text="发送数据:";left=19;top=231;right=90;bottom=261;align="right";center=1;font=LOGFONT(h=-16);notify=1;transparent=1;z=17};
-sendFileButton={cls="button";text="发送文件";left=23;top=274;right=197;bottom=303;z=27};
-sendInterval={cls="edit";text="100";left=449;top=271;right=510;bottom=300;border=1;font=LOGFONT(h=-19);z=24};
-static6={cls="static";text="发送周期:";left=367;top=273;right=438;bottom=303;align="right";center=1;font=LOGFONT(h=-16);notify=1;transparent=1;z=23};
-static7={cls="static";text="ms";left=512;top=271;right=540;bottom=301;align="right";center=1;font=LOGFONT(h=-16);notify=1;transparent=1;z=25};
-stopAutoButton={cls="button";text="停止自动";left=638;top=269;right=717;bottom=301;z=22};
+saveButton={cls="button";text="保存数据";left=214;top=151;right=287;bottom=178;z=29};
+sendButton={cls="button";text="手动发送";left=556;top=227;right=718;bottom=259;z=19};
+sendFileButton={cls="button";text="发送文件";left=27;top=272;right=201;bottom=301;z=25};
+sendInterval={cls="edit";text="100";left=633;top=268;right=694;bottom=300;border=1;font=LOGFONT(h=-19);multiline=1;z=22};
+static7={cls="static";text="ms";left=689;top=264;right=717;bottom=294;align="right";center=1;font=LOGFONT(h=-16);notify=1;transparent=1;z=23};
+stopAutoButton={cls="button";text="停止";left=595;top=268;right=627;bottom=300;z=21};
 stopBitLabel={cls="static";text="停止位:";left=20;top=139;right=76;bottom=169;align="right";center=1;font=LOGFONT(h=-16);notify=1;transparent=1;z=14};
 stopBits={cls="combobox";left=92;top=140;right=197;bottom=160;edge=1;items={};mode="dropdownlist";z=13};
-transFlieprogress={cls="progress";left=12;top=314;right=724;bottom=333;edge=1;max=100;min=0;z=32}
+transFlieprogress={cls="progress";left=12;top=314;right=724;bottom=333;edge=1;max=100;min=0;z=30}
 )
 /*}}*/
 
